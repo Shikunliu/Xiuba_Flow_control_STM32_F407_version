@@ -1,0 +1,25 @@
+--cpu Cortex-M4.fp
+".\output\startup_stm32f4xx.o"
+".\output\main.o"
+".\output\system_stm32f4xx.o"
+".\output\stm32f4xx_it.o"
+".\output\modbus_slave.o"
+".\output\usart.o"
+".\output\misc.o"
+".\output\stm32f4xx_rcc.o"
+".\output\stm32f4xx_gpio.o"
+".\output\stm32f4xx_tim.o"
+".\output\stm32f4xx_exti.o"
+".\output\stm32f4xx_syscfg.o"
+".\output\stm32f4xx_usart.o"
+".\output\bsp.o"
+".\output\bsp_led.o"
+".\output\bsp_timer.o"
+".\output\bsp_limit_switch.o"
+".\output\bsp_level_sensor_input.o"
+".\output\bsp_uart_fifo.o"
+".\output\bsp_user_lib.o"
+--library_type=microlib --strict --scatter ".\output\test.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\output\test.map" -o .\output\test.axf
