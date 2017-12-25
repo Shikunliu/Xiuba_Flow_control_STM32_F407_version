@@ -63,11 +63,15 @@ void SysTick_Handler(void)
 
 void EXTI0_IRQHandler(void)
 {
-	USART_SendData(USART1, 0X22);	
-	Delay(0xFFFFF); 
+		extern void valveOn();
+	  extern uint8_t cal_flag;
+
+		Delay(0xFFFFF); 
+
   	if(EXTI_GetITStatus(EXTI_Line0) != RESET)
   	{
-		if(Get_Key(KEY1)==0)LEDTog(LED1);		
+			cal_flag = 1;
+					
     	EXTI_ClearITPendingBit(EXTI_Line0);
   	}
 }

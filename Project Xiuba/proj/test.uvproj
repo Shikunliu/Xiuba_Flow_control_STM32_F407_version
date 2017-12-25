@@ -364,7 +364,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F4XX</Define>
               <Undefine></Undefine>
-              <IncludePath>..\inc;..\board\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\src\bsp\inc;..\src\bsp\src;..\src\bsp</IncludePath>
+              <IncludePath>..\inc;..\board\inc;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\src\bsp\inc;..\src\bsp\src;..\src\bsp;..\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -431,6 +431,16 @@
               <FileName>stm32f4xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\stm32f4xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>modbus_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\modbus_slave.c</FilePath>
+            </File>
+            <File>
+              <FileName>modbus_slave.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\modbus_slave.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -526,6 +536,36 @@
               <FileName>bsp_limit_switch.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\bsp\inc\bsp_limit_switch.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_level_sensor_input.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\bsp\src\bsp_level_sensor_input.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_level_sensor_input.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\bsp\inc\bsp_level_sensor_input.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_uart_fifo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\bsp\src\bsp_uart_fifo.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_user_lib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\bsp\src\bsp_user_lib.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_uart_fifo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\bsp\inc\bsp_uart_fifo.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_user_lib.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\bsp\inc\bsp_user_lib.h</FilePath>
             </File>
           </Files>
         </Group>

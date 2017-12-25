@@ -307,7 +307,7 @@ void RS485_ReciveNew(uint8_t _byte)
 static void UartVarInit(void)
 {
 
-	g_tUart1.uart = USART1;						/* STM32 串口设备 */
+	g_tUart1.uart = USART3;						/* STM32 串口设备 */
 	g_tUart1.pTxBuf = g_TxBuf1;					/* 发送缓冲区指针 */
 	g_tUart1.pRxBuf = g_RxBuf1;					/* 接收缓冲区指针 */
 	g_tUart1.usTxBufSize = UART1_TX_BUF_SIZE;	/* 发送缓冲区大小 */
@@ -350,41 +350,41 @@ static void UartVarInit(void)
 static void InitHardUart(void)
 {	
 		GPIO_InitTypeDef GPIO_InitStructure;
-  	USART_InitTypeDef USART_InitStructure;
+  	USART_InitTypeDef USART_InitStructure; 
 
 	/* 第1步：打开GPIO和USART部件的时钟 */
-		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE); 
-  	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE); 
+  	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 
 	// 第2步：将USART Tx的GPIO配置为推挽复用模式
 
 	// 第3步：将USART Rx的GPIO配置为浮空输入模式由于CPU复位后，GPIO缺省都是浮空输入模式，因此下面这个步骤不是必须的
 	
-		GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_USART1);  
-  	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_USART1);
-  	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
+		
+ 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource8, GPIO_AF_USART3);  
+  	GPIO_PinAFConfig(GPIOD, GPIO_PinSource9, GPIO_AF_USART3);
+  	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
   	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
   	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-  	GPIO_Init(GPIOB, &GPIO_InitStructure); 
+  	GPIO_Init(GPIOD, &GPIO_InitStructure); 
 
 
 	
 	// 第4步： 配置串口硬件参数
 	/*--------------USART1 USART2配置-------------------*/
-		USART_InitStructure.USART_BaudRate = UART1_BAUD;//波特率设置
+	USART_InitStructure.USART_BaudRate = UART1_BAUD;//波特率设置
   	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
   	USART_InitStructure.USART_StopBits = USART_StopBits_1;
   	USART_InitStructure.USART_Parity = USART_Parity_No;
   	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
   	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx; 
-  	USART_Init(USART1, &USART_InitStructure);
-  	USART_Cmd(USART1, ENABLE);
-  	USART_ClearFlag(USART1, USART_FLAG_TC);
+  	USART_Init(USART3, &USART_InitStructure);
+  	USART_Cmd(USART3, ENABLE);
+  	USART_ClearFlag(USART3, USART_FLAG_TC);
 		
-		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+		USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
 }
 
 /*
@@ -416,6 +416,15 @@ void USART1_SendString(uint8_t *ch)
 	}   	
 }
 
+void UART4_SendString(uint8_t *ch)
+{
+	while(*ch!=0)
+	{		
+		while(!USART_GetFlagStatus(UART4, USART_FLAG_TXE));
+		USART_SendData(UART4, *ch);
+		ch++;
+	}   	
+}
 /*
 *********************************************************************************************************
 *	函 数 名: ConfigUartNVIC
@@ -429,7 +438,7 @@ static void ConfigUartNVIC(void)
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	
 
-	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn; 
+	NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn; 
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
@@ -445,7 +454,7 @@ static void ConfigUartNVIC(void)
 *********************************************************************************************************
 */
 
-void USART1_IRQHandler(void)
+void USART3_IRQHandler(void)
 {
 	UartIRQ(&g_tUart1);
 }

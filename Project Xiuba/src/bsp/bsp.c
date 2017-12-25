@@ -34,10 +34,11 @@ void bsp_Init(void)
 	LEVEL_SENSOR_INPUT_Configuration();
 	NVIC_Configuration();    //测试额外timer，配置中断
   //RELAY_Configuration();	 //继电器初始化
-  LED_Configuration();	 //LED初始化
+  LED_Configuration();	 //泵初始化
+	valve_Configuration(); //阀初始化
 	bsp_InitUart(); 	     //串口初始化
-	//Key_Init();
-	//Set_Keyint(KEY1);
+	Key_Init();
+	Set_Keyint(KEY1);
 
 }
 

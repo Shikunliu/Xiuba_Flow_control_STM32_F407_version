@@ -3,43 +3,40 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-C:\Users\lenovo\Desktop\F407 ÒÆÖ²\Project Xiuba\proj\test.uvproj
-Project File Date:  12/18/2017
+C:\Users\lenovo\Desktop\F427 ÒÆÖ² - ¸±±¾\Project Xiuba\proj\test.uvproj
+Project File Date:  12/19/2017
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling bsp_led.c...
+compiling main.c...
+..\src\main.c(121): warning:  #188-D: enumerated type mixed with another type
+                                valveOn(valve_arr[count]);      
+..\src\main.c(122): warning:  #188-D: enumerated type mixed with another type
+                                LEDOn(LED_arr[count]);                  
+..\src\main.c(124): warning:  #188-D: enumerated type mixed with another type
+                valveOff(valve_arr[count]);     
+..\src\main.c(125): warning:  #188-D: enumerated type mixed with another type
+                LEDOff(LED_arr[count]); 
+..\src\main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=4634 RO-data=442 RW-data=100 ZI-data=5412  
+Program Size: Code=6620 RO-data=592 RW-data=208 ZI-data=5416  
 FromELF: creating hex file...
-".\output\test.axf" - 0 Error(s), 0 Warning(s).
-s).
-ning(s).
-p_user_lib.c...
+".\output\test.axf" - 0 Error(s), 4 Warning(s).
+rs
 linking...
-Program Size: Code=4394 RO-data=442 RW-data=100 ZI-data=5412  
+Program Size: Code=6544 RO-data=560 RW-data=208 ZI-data=5416  
 FromELF: creating hex file...
-".\output\test.axf" - 0 Error(s), 0 Warning(s).
-iling bsp.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        LED5 = 5
-..\src\bsp\bsp.c: 0 warnings, 1 error
+".\output\test.axf" - 0 Error(s), 3 Warning(s).
+GPIOB, GPIOB};
+..\src\bsp\inc\bsp_led.h(39): error:  #147: declaration is incompatible with "const u16 LED_PIN[4]" (declared at line 15 of "..\board\inc\led.h")
+  static const u16 LED_PIN[16]={GPIO_Pin_2, GPIO_Pin_3, GPIO_Pin_4,GPIO_Pin_5, GPIO_Pin_6, GPIO_Pin_7, GPIO_Pin_8, GPIO_Pin_9, GPIO_Pin_10, GPIO_Pin_11, GPIO_Pin_12, GPIO_Pin_15, GPIO_Pin_0, GPIO_Pin_1, GPIO_Pin_4, GPIO_Pin_5};
+..\src\bsp\inc\bsp_led.h(41): error:  #147-D: declaration is incompatible with "void LEDOn(Led_Def)" (declared at line 18 of "..\board\inc\led.h")
+  void LEDOn(Led_Def Led);
+..\src\bsp\inc\bsp_led.h(42): error:  #147-D: declaration is incompatible with "void LEDOff(Led_Def)" (declared at line 19 of "..\board\inc\led.h")
+  void LEDOff(Led_Def Led);
+..\src\bsp\inc\bsp_led.h(43): error:  #147-D: declaration is incompatible with "void LEDTog(Led_Def)" (declared at line 20 of "..\board\inc\led.h")
+  void LEDTog(Led_Def Led);
+..\src\stm32f4xx_it.c: 0 warnings, 10 errors
 compiling bsp_led.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        LED5 = 5
-..\src\bsp\src\bsp_led.c: 0 warnings, 1 error
-compiling bsp_timer.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        LED5 = 5
-..\src\bsp\src\bsp_timer.c: 0 warnings, 1 error
-compiling bsp_limit_switch.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        LED5 = 5
-..\src\bsp\src\bsp_limit_switch.c: 0 warnings, 1 error
-compiling bsp_uart_fifo.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        LED5 = 5
-..\src\bsp\src\bsp_uart_fifo.c: 0 warnings, 1 error
-compiling bsp_user_lib.c...
-..\src\bsp\inc\bsp_led.h(26): error:  #101: "LED5" has already been declared in the current scope
-        
+".\output\test.axf" - 10 Error(s), 0 Warning(s).
+Target not created
